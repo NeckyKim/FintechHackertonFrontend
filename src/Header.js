@@ -11,7 +11,7 @@ function Header() {
     return (
         <div className={styles.header}>
             <div className={styles.title} onClick={() => {
-                navigate('/');
+                navigate('/main');
             }}>
                 cardvisor
             </div>

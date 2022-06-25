@@ -1,4 +1,4 @@
-import styles from './Service2.module.css';
+import styles from './Service3.module.css';
 import ReactApexChart from "react-apexcharts"; 
 
 import { useNavigate } from 'react-router-dom';
@@ -253,7 +253,7 @@ function categoryTranslator(brandname) {
 
 
 
-function Service2() {
+function Service3() {
     const [mydata, setMydatas] = useState({
         bank_name: "",
         res_list: [{}],
@@ -262,7 +262,7 @@ function Service2() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/serviceTwo/save")
+        fetch("/serviceThree/save")
             .then((response) => {
                 return response.json();
             })
@@ -370,23 +370,6 @@ function Service2() {
         }
     }
 
-    console.log("여기")
-    console.log(total_transport);
-    console.log(total_communication);
-    console.log(total_mart);
-    console.log(total_convstore);
-    console.log(total_movies);
-    console.log(total_entertainment);
-    console.log(total_deptstore);
-    console.log(total_onlineshopping);
-    console.log(total_easypay);
-    console.log(total_cafebakery);
-    console.log(total_beauty);
-    console.log(total_dining);
-    console.log(total_books);
-    console.log(total_themepark);
-    console.log(total_fuel);
-
     const donutData = {
         series: [
             total_transport, 
@@ -490,7 +473,7 @@ function Service2() {
                 <br/><br/>
 
                 <button className={styles.sendButton} onClick={() => {
-                    navigate('/service2/results');
+                    navigate('/service3/results');
                 }}>
                     추천받기
                 </button>
@@ -498,4 +481,48 @@ function Service2() {
     );
 }
 
-export default Service2;
+export default Service3;
+
+
+
+
+// import styles from '../Service.module.css';
+
+// import { useNavigate } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
+
+
+// function Service3() {
+//     const [mydata, setMydatas] = useState({
+//         bank_name: "",
+//         res_list: [{}],
+//     });
+
+//     const navigate = useNavigate();
+
+//     useEffect(() => {
+//         fetch("/serviceThree/save")
+//             .then((response) => {
+//                 return response.json();
+//             })
+//             .then(data => {
+//                 setMydatas(data);
+//             });
+//     }, []);
+
+//     return (
+//         <div>
+
+//             {mydata?.bank_name}
+//             <button onClick={() => {
+//                 navigate('/service3/results')
+//             }}>
+//                 추천받기
+//             </button>
+
+
+//         </div >
+//     );
+// }
+
+// export default Service3;
