@@ -1,9 +1,11 @@
-import styles from './Service3Results.css';
+import styles from './Service3ResultsMore.css';
 
 import { useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
 
 const { kakao } = window;
+
+
 
 var mydata = [
     {
@@ -188,22 +190,28 @@ var mydata = [
     },
 ]
 
-function dateParser(date) {
-    return String(date).slice(0, 4) + "년 " + String(date).slice(4, 6) + "월 " + String(date).slice(6, 8) + "일"
+
+function typeParser(type) {
+    if (type === "credit\r") { return "신용카드" }
+    else if (type === "check\r") { return "체크카드" }
+    else if (type === "hybrid\r") { return "하이브리드 카드" }
 }
 
-function Service3Results(searchPlace) {
+
+
+function Service3ResultsMore(searchPlace) {
     const navigate = useNavigate();
     const [Places, setPlaces] = useState([])
 
     // 5월 31일에 추천된 카드 리스트를 받기 위해 추가한 코드들 //////
     // 33번째 줄에 {cards.cards} 를 통해 잘 받은 것을 알 수 있음
     const [cards, setCards] = useState({
-        locationList: [{}]
+        topTenCards: [{}],
+        bestCardBenefits: [{}],
     });
 
     useEffect(() => {
-        fetch("/serviceThree/map")
+        fetch("/results3")
             .then((response) => {
                 return response.json();
             })
@@ -227,9 +235,9 @@ function Service3Results(searchPlace) {
 
         for (let i = 0; i < mydata.length; i++) {
             displayMarker(mydata[i]);
-
-            // bounds.extend(new kakao.maps.LatLng(cards?.locationList[i]?.mapy, cards?.locationList[i]?.mapx))
         }
+
+
 
         function displayMarker(place) {
             var imageSrc = 'https://cdn.icon-icons.com/icons2/567/PNG/512/marker_icon-icons.com_54388.png';
@@ -267,31 +275,54 @@ function Service3Results(searchPlace) {
     return (
         <div>
             <div className='myMap' id="myMap"></div>
+            <br /><br />
 
-            {mydata.map(cur => (
-                <div className='transactionZone'>
-                    <div className='zonea'>
-                        {dateParser(cur.date)}
-                        <br />
-                    </div>
-                    <div className='zoneb'>
-                        {cur.brandNameKor}
-                    </div>
+            <div className='zonex'>
+                <img
+                    className='bestCardImage'
+                    alt="cards"
+                    src={process.env.PUBLIC_URL + '/images/card_images/' + cards?.topTenCards[0]?.id + '.png'} />
+            </div>
 
-                    <div className='zonec'>
-                        {cur.cost}원
-                    </div>
-                    </div>                      
-                ))}
-                <br/><br/>
+            <div>
+                <div className='bestCardName'>
+                    {cards.topTenCards[0].name}
+                </div>
 
-            <button className='sendButton' onClick={() => {
-                navigate('/service3/results/more');
+            </div>
+
+            <div className='line'>
+
+            </div>
+
+            <div className='zonez'>
+                <div className='bestCardCompany'>
+                    <div className='bestCardCompanyText'>
+                        {typeParser(cards.topTenCards[0].type)}
+                        │
+                    </div>
+                    <div>
+                        <img
+                            className='bestCardCompanyImage'
+                            alt="cards"
+                            src={process.env.PUBLIC_URL + '/images/card_logo/center_aligned/' + cards.topTenCards[0].company_eng + '.png'} />
+                    </div>
+                </div>
+            </div>
+
+            <button className='moreInfoButton1' onClick={() => {
+                window.open("https://www.banksalad.com/cards/" + cards?.topTenCards[0]?.id + "/issue");
             }}>
-                추천받기
+                카드사 홈페이지
             </button>
-        </div >
+
+            <button className='moreInfoButton2' onClick={() => {
+                window.open("https://www.banksalad.com/cards/" + cards?.topTenCards[0]?.id + "/issue");
+            }}>
+                카드 상세 정보
+            </button>
+        </div>
     );
 }
 
-export default Service3Results;
+export default Service3ResultsMore;

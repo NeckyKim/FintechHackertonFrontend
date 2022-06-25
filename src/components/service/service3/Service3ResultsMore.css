@@ -1,5 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "NanumBarunGothic", sans-serif;
+}
+
 .myMap {
-    width: 800px;
+    width: 1300px;
     height: 600px;
     margin-left: 300px;
     margin-right: 300px;
@@ -55,46 +61,60 @@
     background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
 }
 
-.transactionZone {
-    border-bottom: 1px solid rgb(200,200,200);
-    height: 60px;
-    padding-top: 20px;
-    display: flex;
-    width: 1300px;
+.zonex {
+    height: 200px;
     margin-left: 300px;
+    float: left;
+}
+
+
+.line {
+    border-bottom: 1px solid rgb(180,180,180);
+    width: 970px;
+    margin-left: 35px;
+    float: left;
+    height: 3px;
+}
+
+.zonez {
+    width: 981px;
+    float: right;
+    height: 70px;
     margin-right: 300px;
 }
 
-
-.zonea {
-    margin-left:0px;
+.bestCardName {
+    margin-left: 35px;
+    float: left;
+    font-size: 2.2rem;
     text-align: left;
-    font-size: 1.3rem;
-    width: 250px;
-    font-weight: 1000;
-    color: rgb(160, 160, 160);
-}
-
-.zoneb {
-    text-align: left;
+    height: 50px;
     width: 1000px;
-    margin-left: 30px;
-    font-size: 1.5rem;
     font-weight: 1000;
 }
 
-.zonec {
-    text-align: right;
+.bestCardCompany{
+    display:flex;
+    float: left;
+}
+
+.bestCardCompanyText{
+    float: left;
+    padding-top: 10px;
+    width: 140px;
+    height: 60px;
+    text-align: left;
+    font-size: 1.8rem;
+    margin-left: 15px;
+}
+
+.bestCardCompanyImage{
+    height: 60px;
+    margin-left: -35px;
+}
+
+.moreInfoButton1 {
     width: 400px;
-    font-size: 2rem;
-    font-weight: 1000;
-    height: 30px;
-    margin-left: 10px;
-    color: rgb(0,200,200);
-}
-
-.sendButton {
-    width: 300px;
     height: 60px;
     font-size: 1.8rem;
     align-items: center;
@@ -103,4 +123,20 @@
     border: transparent;
     border-radius: 5px;
     cursor: pointer;
+    float:left;
+    margin-left: 35px;
+}
+
+.moreInfoButton2 {
+    width: 400px;
+    height: 60px;
+    font-size: 1.8rem;
+    align-items: center;
+    background-color: rgb(52, 152, 219);
+    color: rgb(255, 255, 255);
+    border: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    float:left;
+    margin-left: 15px;
 }

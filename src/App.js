@@ -11,6 +11,7 @@ import Service2 from './components/service/service2/Service2';
 import Service2Results from './components/service/service2/Service2Results';
 import Service3 from './components/service/service3/Service3';
 import Service3Results from './components/service/service3/Service3Results';
+import Service3ResultsMore from './components/service/service3/Service3ResultsMore';
 import List from './components/list/List';
 import MyPage from './components/mypage/MyPage';
 import CardInfo from './components/cardinfo/CardInfo';
@@ -32,6 +33,7 @@ function App() {
                 <Route exact path='/service2/results' element={<Service2Results />} />
                 <Route exact path='/service3' element={<Service3 />} />
                 <Route exact path='/service3/results' element={<Service3Results />} />
+                <Route exact path='/service3/results/more' element={<Service3ResultsMore />} />
                 <Route exact path='/list' element={<List />} />
                 <Route exact path='/mypage' element={<MyPage />} />
                 <Route exact path='/cardinfo' element={<CardInfo />} />
